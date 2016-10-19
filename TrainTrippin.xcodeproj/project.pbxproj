@@ -14,6 +14,9 @@
 		AE38CC081DB6748B002AE26A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE38CC071DB6748B002AE26A /* Assets.xcassets */; };
 		AE38CC0B1DB6748B002AE26A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE38CC091DB6748B002AE26A /* LaunchScreen.storyboard */; };
 		AE38CC161DB6748B002AE26A /* TrainTrippinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE38CC151DB6748B002AE26A /* TrainTrippinTests.swift */; };
+		AE94CA2A1DB67D2B007C0648 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE94CA291DB67D2B007C0648 /* main.swift */; };
+		C2A8731D3F51B66D0C6B2383 /* Pods_TrainTrippinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141683440CC061EF1C186832 /* Pods_TrainTrippinTests.framework */; };
+		F60C6F4A9E4150D72ECC54CA /* Pods_TrainTrippin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99AE8F2C4B4B1C801996FDC /* Pods_TrainTrippin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12ABF06F22246A4BB5606740 /* Pods-TrainTrippin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrainTrippin.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrainTrippin/Pods-TrainTrippin.release.xcconfig"; sourceTree = "<group>"; };
+		141683440CC061EF1C186832 /* Pods_TrainTrippinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrainTrippinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9CAC5F601ECCBEC37627396 /* Pods-TrainTrippinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrainTrippinTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrainTrippinTests/Pods-TrainTrippinTests.release.xcconfig"; sourceTree = "<group>"; };
 		AE38CBFB1DB6748B002AE26A /* TrainTrippin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainTrippin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE38CBFE1DB6748B002AE26A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE38CC001DB6748B002AE26A /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +44,10 @@
 		AE38CC111DB6748B002AE26A /* TrainTrippinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainTrippinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE38CC151DB6748B002AE26A /* TrainTrippinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTrippinTests.swift; sourceTree = "<group>"; };
 		AE38CC171DB6748B002AE26A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE94CA291DB67D2B007C0648 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B662A2FDD1E03C0855898F83 /* Pods-TrainTrippin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrainTrippin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrainTrippin/Pods-TrainTrippin.debug.xcconfig"; sourceTree = "<group>"; };
+		B99AE8F2C4B4B1C801996FDC /* Pods_TrainTrippin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrainTrippin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFBCC306B7AC501FD352FC1 /* Pods-TrainTrippinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrainTrippinTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrainTrippinTests/Pods-TrainTrippinTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F60C6F4A9E4150D72ECC54CA /* Pods_TrainTrippin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +63,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2A8731D3F51B66D0C6B2383 /* Pods_TrainTrippinTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B29EA03243343D3ADC4BDA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B99AE8F2C4B4B1C801996FDC /* Pods_TrainTrippin.framework */,
+				141683440CC061EF1C186832 /* Pods_TrainTrippinTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AE38CBF21DB6748B002AE26A = {
 			isa = PBXGroup;
 			children = (
 				AE38CBFD1DB6748B002AE26A /* TrainTrippin */,
 				AE38CC141DB6748B002AE26A /* TrainTrippinTests */,
 				AE38CBFC1DB6748B002AE26A /* Products */,
+				BAE738385508E2075F4D1E67 /* Pods */,
+				5B29EA03243343D3ADC4BDA2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +109,7 @@
 				AE38CC071DB6748B002AE26A /* Assets.xcassets */,
 				AE38CC091DB6748B002AE26A /* LaunchScreen.storyboard */,
 				AE38CC0C1DB6748B002AE26A /* Info.plist */,
+				AE94CA291DB67D2B007C0648 /* main.swift */,
 			);
 			path = TrainTrippin;
 			sourceTree = "<group>";
@@ -99,6 +123,17 @@
 			path = TrainTrippinTests;
 			sourceTree = "<group>";
 		};
+		BAE738385508E2075F4D1E67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B662A2FDD1E03C0855898F83 /* Pods-TrainTrippin.debug.xcconfig */,
+				12ABF06F22246A4BB5606740 /* Pods-TrainTrippin.release.xcconfig */,
+				FAFBCC306B7AC501FD352FC1 /* Pods-TrainTrippinTests.debug.xcconfig */,
+				A9CAC5F601ECCBEC37627396 /* Pods-TrainTrippinTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +141,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE38CC1A1DB6748B002AE26A /* Build configuration list for PBXNativeTarget "TrainTrippin" */;
 			buildPhases = (
+				73F5856EB881125310C7B114 /* [CP] Check Pods Manifest.lock */,
 				AE38CBF71DB6748B002AE26A /* Sources */,
 				AE38CBF81DB6748B002AE26A /* Frameworks */,
 				AE38CBF91DB6748B002AE26A /* Resources */,
+				D34B7C2973D1686FA2D308C5 /* [CP] Embed Pods Frameworks */,
+				AF5B63374A9AF451910324A7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,9 +161,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE38CC1D1DB6748B002AE26A /* Build configuration list for PBXNativeTarget "TrainTrippinTests" */;
 			buildPhases = (
+				AC59DB89CE4531D23F6E005D /* [CP] Check Pods Manifest.lock */,
 				AE38CC0D1DB6748B002AE26A /* Sources */,
 				AE38CC0E1DB6748B002AE26A /* Frameworks */,
 				AE38CC0F1DB6748B002AE26A /* Resources */,
+				2B4BF7D0D21DECA99CA772EE /* [CP] Embed Pods Frameworks */,
+				36DB934260327F62F9B4F93C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,6 +240,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2B4BF7D0D21DECA99CA772EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrainTrippinTests/Pods-TrainTrippinTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36DB934260327F62F9B4F93C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrainTrippinTests/Pods-TrainTrippinTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73F5856EB881125310C7B114 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AC59DB89CE4531D23F6E005D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AF5B63374A9AF451910324A7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrainTrippin/Pods-TrainTrippin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D34B7C2973D1686FA2D308C5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrainTrippin/Pods-TrainTrippin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AE38CBF71DB6748B002AE26A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -206,6 +340,7 @@
 			files = (
 				AE38CC031DB6748B002AE26A /* DetailViewController.swift in Sources */,
 				AE38CC011DB6748B002AE26A /* MasterViewController.swift in Sources */,
+				AE94CA2A1DB67D2B007C0648 /* main.swift in Sources */,
 				AE38CBFF1DB6748B002AE26A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +476,7 @@
 		};
 		AE38CC1B1DB6748B002AE26A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B662A2FDD1E03C0855898F83 /* Pods-TrainTrippin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 47872CSHA2;
@@ -354,6 +490,7 @@
 		};
 		AE38CC1C1DB6748B002AE26A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12ABF06F22246A4BB5606740 /* Pods-TrainTrippin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 47872CSHA2;
@@ -367,6 +504,7 @@
 		};
 		AE38CC1E1DB6748B002AE26A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAFBCC306B7AC501FD352FC1 /* Pods-TrainTrippinTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -382,6 +520,7 @@
 		};
 		AE38CC1F1DB6748B002AE26A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9CAC5F601ECCBEC37627396 /* Pods-TrainTrippinTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -414,6 +553,7 @@
 				AE38CC1C1DB6748B002AE26A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE38CC1D1DB6748B002AE26A /* Build configuration list for PBXNativeTarget "TrainTrippinTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +562,7 @@
 				AE38CC1F1DB6748B002AE26A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

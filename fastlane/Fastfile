@@ -1,0 +1,12 @@
+fastlane_version "1.105.2"
+
+default_platform :ios
+
+platform :ios do
+  desc "Build project"
+  lane :make do
+    cocoapods
+
+  end
+
+end
