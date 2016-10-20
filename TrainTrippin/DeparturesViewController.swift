@@ -42,6 +42,19 @@ class DeparturesViewController: UIViewController {
         viewModel.departuresSections
             .drive(departuresTableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
+
+        viewModel.currentRoute.asObservable()
+            .subscribe(onNext: { route in
+                UIView.animate(withDuration: 0.2) { [unowned self] in
+                    if route == .fromDalkeyToBroombridge {
+                        self.changeDirectionButton.transform = CGAffineTransform(rotationAngle: 0.0)
+                    }
+                    else {
+                        self.changeDirectionButton.transform = CGAffineTransform(rotationAngle:  CGFloat(M_PI))
+                    }
+                }
+            })
+            .addDisposableTo(disposeBag)
     }
     
     func loadDepartures(_ viewModel: DeparturesViewModel) {
@@ -49,10 +62,7 @@ class DeparturesViewController: UIViewController {
     }
     
     @IBAction func changeDirectionButtonDidTap() {
-        loadDepartures(self.viewModel)
-        UIView.animate(withDuration: 0.2) { [unowned self] in
-            self.changeDirectionButton.transform = self.changeDirectionButton.transform.rotated(by: CGFloat(M_PI))
-        }
+        viewModel.toggleRoute.onNext(())
     }
 }
 

@@ -19,9 +19,16 @@ class DeparturesViewModel: NSObject {
     
     //  Input:
     let refreshDepartures = PublishSubject<Void>()
+    let toggleRoute = PublishSubject<Void>()
     
     //  Output:
     let departuresSections: Driver<[DeparturesListSection]>
+    let currentRoute = Variable(Route.fromDalkeyToBroombridge)
+    
+    enum Route {
+        case fromDalkeyToBroombridge
+        case fromBroombridgeToDalkey
+    }
     
     private let networking = Networking()
     private let departures = Variable<[DepartureModel]>([])
@@ -64,14 +71,32 @@ class DeparturesViewModel: NSObject {
         
         super.init()
         
-        refreshDepartures
+        toggleRoute
             .subscribe(onNext: { [unowned self] _ in
+                if self.currentRoute.value == Route.fromBroombridgeToDalkey {
+                    self.currentRoute.value = Route.fromDalkeyToBroombridge
+                }
+                else {
+                    self.currentRoute.value = Route.fromBroombridgeToDalkey
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
+        refreshDepartures
+            .withLatestFrom(currentRoute.asObservable())
+            .subscribe(onNext: { [unowned self] route in
                 self.networking.request()
                     .map(self.transformResponseIntoDepartureModels)
                     .bindTo(self.departures)
                     .addDisposableTo(self.disposeBag)
                 }
             )
+            .addDisposableTo(disposeBag)
+        
+        currentRoute.asObservable()
+            .subscribe(onNext: { [unowned self] _ in
+                self.refreshDepartures.onNext(())
+            })
             .addDisposableTo(disposeBag)
     }
 }
