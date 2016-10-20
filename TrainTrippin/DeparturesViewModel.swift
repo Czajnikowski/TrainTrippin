@@ -34,7 +34,7 @@ class DeparturesViewModel: NSObject {
         static let expectedDeparture = "Expdepart"
     }
     
-    let transformDataIntoSection: (HTTPURLResponse, Data) -> [DeparturesListSection] = { response in
+    let transformResponseIntoDepartureModels: (Networking.Response) -> [DepartureModel] = { response in
         let xml = SWXMLHash.parse(response.1)
         let station = xml[XMLElementName.root][XMLElementName.stationData]
         let cellModels = station
