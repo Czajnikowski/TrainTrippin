@@ -17,4 +17,5 @@ struct DepartureModel {
     var trainCode: String
     var trainType: String
     var expectedDeparture: String //  HH:mm
+    var trainDirection: TrainDirection
 }

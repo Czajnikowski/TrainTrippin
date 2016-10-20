@@ -17,7 +17,7 @@ class DepartureCellModelTests: XCTestCase {
         timeFormatter.dateFormat = "HH:mm"
         timeFormatter.timeZone = TimeZone(secondsFromGMT: 3600)
         let dateString = timeFormatter.string(from: date15MinutesAhead)
-        let givenDepartureModel = DepartureModel(trainCode: "traincode", trainType: "traintype", expectedDeparture: dateString)
+        let givenDepartureModel = DepartureModel(trainCode: "traincode", trainType: "traintype", expectedDeparture: dateString, trainDirection: .northbound)
         
         let departureCellModelSUT = DepartureCellModel(withDeparture: givenDepartureModel)
         

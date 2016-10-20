@@ -32,25 +32,25 @@ class DeparturesViewModel: NSObject {
         static let trainCode = "Traincode"
         static let trainType = "Traintype"
         static let expectedDeparture = "Expdepart"
+        static let trainDirection = "Direction"
+        static let northboundDirection = "Northbound"
+        static let southboundDirection = "Southbound"
     }
     
     let transformResponseIntoDepartureModels: (Networking.Response) -> [DepartureModel] = { response in
         let xml = SWXMLHash.parse(response.1)
         let station = xml[XMLElementName.root][XMLElementName.stationData]
-        let cellModels = station
+        
+        return station
             .map { xml in
                 let trainCode = xml[XMLElementName.trainCode].element!.text!
                 let trainType = xml[XMLElementName.trainType].element!.text!
                 let expectedDeparture = xml[XMLElementName.expectedDeparture].element!.text!
+                let trainDirection = xml[XMLElementName.trainDirection].element!.text! == XMLElementName.northboundDirection ? TrainDirection.northbound : TrainDirection.southbound
                 
-                return (trainCode, trainType, expectedDeparture)
+                return (trainCode, trainType, expectedDeparture, trainDirection)
             }
             .map(DepartureModel.init)
-            .map(DepartureCellModel.init)
-        
-        let section = DeparturesListSection(model: Void(), items: cellModels)
-
-        return [section]
     }
     
     override init() {
@@ -70,7 +70,8 @@ class DeparturesViewModel: NSObject {
                     .map(self.transformResponseIntoDepartureModels)
                     .bindTo(self.departures)
                     .addDisposableTo(self.disposeBag)
-                })
+                }
+            )
             .addDisposableTo(disposeBag)
     }
 }
