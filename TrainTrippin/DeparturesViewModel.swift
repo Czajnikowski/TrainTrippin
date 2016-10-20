@@ -44,7 +44,7 @@ class DeparturesViewModel: NSObject {
         static let southboundDirection = "Southbound"
     }
     
-    let transformResponseIntoDepartureModels: (Networking.Response) -> [DepartureModel] = { response in
+    func transformResponseIntoDepartureModelsTowardsDestination(_ response: (HTTPURLResponse, Data)) -> [DepartureModel] {
         let xml = SWXMLHash.parse(response.1)
         let station = xml[XMLElementName.root][XMLElementName.stationData]
         
@@ -56,6 +56,14 @@ class DeparturesViewModel: NSObject {
                 let trainDirection = xml[XMLElementName.trainDirection].element!.text! == XMLElementName.northboundDirection ? TrainDirection.northbound : TrainDirection.southbound
                 
                 return (trainCode, trainType, expectedDeparture, trainDirection)
+            }
+            .filter { train in
+                if currentRoute.value == .fromDalkeyToBroombridge {
+                    return train.3 == .northbound
+                }
+                else {
+                    return train.3 == .southbound
+                }
             }
             .map(DepartureModel.init)
     }
@@ -85,8 +93,16 @@ class DeparturesViewModel: NSObject {
         refreshDepartures
             .withLatestFrom(currentRoute.asObservable())
             .subscribe(onNext: { [unowned self] route in
-                self.networking.request()
-                    .map(self.transformResponseIntoDepartureModels)
+                let request: Observable<(HTTPURLResponse, Data)>
+                if route == Route.fromDalkeyToBroombridge {
+                    request = self.networking.requestTrainsFromDalkey()
+                }
+                else {
+                    request = self.networking.requestTrainsFromBroombridge()
+                }
+                
+                request
+                    .map(self.transformResponseIntoDepartureModelsTowardsDestination)
                     .bindTo(self.departures)
                     .addDisposableTo(self.disposeBag)
                 }

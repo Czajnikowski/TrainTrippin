@@ -25,9 +25,16 @@ class Networking {
         URLCache.shared = urlCache
     }
     
-    func request() -> Observable<Response> {
-        let url = APIurl.departuresFromDalkeyURL
-        
+    func requestTrainsFromDalkey() -> Observable<Response> {
+        return request(withURL: APIurl.departuresFromDalkeyURL)
+    }
+    
+    func requestTrainsFromBroombridge() -> Observable<Response> {
+        return request(withURL: APIurl.departuresFromBroombridgeURL)
+    }
+    
+    //test it?
+    private func request(withURL url: URL) -> Observable<Response> {
         let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url))
         if let cachedResponse = cachedResponse {
             let subject = BehaviorSubject(value: (cachedResponse.response as! HTTPURLResponse, cachedResponse.data))
