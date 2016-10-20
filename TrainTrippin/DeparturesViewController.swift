@@ -39,7 +39,7 @@ class DeparturesViewController: UIViewController {
             return cell
         }
         
-        viewModel.sections
+        viewModel.departuresSections
             .drive(departuresTableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
     }

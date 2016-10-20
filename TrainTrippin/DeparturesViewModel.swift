@@ -21,7 +21,7 @@ class DeparturesViewModel: NSObject {
     let refreshDepartures = PublishSubject<Void>()
     
     //  Output:
-    let sections: Driver<[DeparturesListSection]>
+    let departuresSections: Driver<[DeparturesListSection]>
     
     private let networking = Networking()
     private let departures = Variable<[DepartureModel]>([])
@@ -54,7 +54,7 @@ class DeparturesViewModel: NSObject {
     }
     
     override init() {
-        sections = departures.asObservable()
+        departuresSections = departures.asObservable()
             .map { departures in
                 let cellModels = departures.map(DepartureCellModel.init)
                 let section = DeparturesListSection(model: Void(), items: cellModels)
