@@ -15,11 +15,16 @@ import RxSwift
 typealias DeparturesListSection = SectionModel<Void, DepartureCellModelType>
 
 class DeparturesViewModel: NSObject {
+    private let disposeBag = DisposeBag()
     
-    let networking = Networking()
+    //  Input:
+    let refreshDepartures = PublishSubject<Void>()
     
     //  Output:
     let sections: Driver<[DeparturesListSection]>
+    
+    private let networking = Networking()
+    private let departures = Variable<[DepartureModel]>([])
     
     struct XMLElementName {
         static let root = "ArrayOfObjStationData"
@@ -49,10 +54,23 @@ class DeparturesViewModel: NSObject {
     }
     
     override init() {
-        sections = self.networking.request()
-            .map(transformDataIntoSection)
+        sections = departures.asObservable()
+            .map { departures in
+                let cellModels = departures.map(DepartureCellModel.init)
+                let section = DeparturesListSection(model: Void(), items: cellModels)
+                return [section]
+            }
             .asDriver(onErrorJustReturn: [])
         
         super.init()
+        
+        refreshDepartures
+            .subscribe(onNext: { [unowned self] _ in
+                self.networking.request()
+                    .map(self.transformResponseIntoDepartureModels)
+                    .bindTo(self.departures)
+                    .addDisposableTo(self.disposeBag)
+                })
+            .addDisposableTo(disposeBag)
     }
 }
