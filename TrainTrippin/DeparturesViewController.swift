@@ -27,6 +27,7 @@ class DeparturesViewController: UIViewController {
         super.viewDidLoad()
         
         configure(viewModel)
+        loadDepartures(viewModel)
     }
     
     func configure(_ viewModel: DeparturesViewModel) {
@@ -43,7 +44,12 @@ class DeparturesViewController: UIViewController {
             .addDisposableTo(disposeBag)
     }
     
+    func loadDepartures(_ viewModel: DeparturesViewModel) {
+        viewModel.refreshDepartures.onNext(())
+    }
+    
     @IBAction func changeDirectionButtonDidTap() {
+        loadDepartures(self.viewModel)
         UIView.animate(withDuration: 0.2) { [unowned self] in
             self.changeDirectionButton.transform = self.changeDirectionButton.transform.rotated(by: CGFloat(M_PI))
         }
