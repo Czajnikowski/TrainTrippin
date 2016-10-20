@@ -14,6 +14,7 @@ class DeparturesViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     @IBOutlet weak var departuresTableView: UITableView!
+    @IBOutlet weak var changeDirectionButton: UIButton!
     @IBOutlet var viewModel: DeparturesViewModel!
     
     let dataSource = RxTableViewSectionedReloadDataSource<DeparturesListSection>()
@@ -40,6 +41,12 @@ class DeparturesViewController: UIViewController {
         viewModel.sections
             .drive(departuresTableView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
+    }
+    
+    @IBAction func changeDirectionButtonDidTap() {
+        UIView.animate(withDuration: 0.2) { [unowned self] in
+            self.changeDirectionButton.transform = self.changeDirectionButton.transform.rotated(by: CGFloat(M_PI))
+        }
     }
 }
 
