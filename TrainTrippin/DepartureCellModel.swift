@@ -6,10 +6,6 @@
 //  Copyright © 2016 Fortunity. All rights reserved.
 //
 
-import RxCocoa
-import RxSwift
-import SWXMLHash
-
 protocol DepartureCellModelType {
     var trainCode: String { get }
     var trainType: String { get }
