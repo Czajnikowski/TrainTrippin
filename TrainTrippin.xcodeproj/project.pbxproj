@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE38CBFF1DB6748B002AE26A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE38CBFE1DB6748B002AE26A /* AppDelegate.swift */; };
 		AE38CC011DB6748B002AE26A /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE38CC001DB6748B002AE26A /* DeparturesViewController.swift */; };
-		AE38CC031DB6748B002AE26A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE38CC021DB6748B002AE26A /* DetailViewController.swift */; };
+		AE38CC031DB6748B002AE26A /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE38CC021DB6748B002AE26A /* RouteViewController.swift */; };
 		AE38CC061DB6748B002AE26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE38CC041DB6748B002AE26A /* Main.storyboard */; };
 		AE38CC081DB6748B002AE26A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE38CC071DB6748B002AE26A /* Assets.xcassets */; };
 		AE38CC0B1DB6748B002AE26A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE38CC091DB6748B002AE26A /* LaunchScreen.storyboard */; };
@@ -18,6 +18,7 @@
 		AE6EF94F1DB80BD3002FC492 /* DepartureCellModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6EF94E1DB80BD3002FC492 /* DepartureCellModelTests.swift */; };
 		AE6EF9531DB813D9002FC492 /* DepartureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6EF9521DB813D9002FC492 /* DepartureModel.swift */; };
 		AE94CA2A1DB67D2B007C0648 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE94CA291DB67D2B007C0648 /* main.swift */; };
+		AEACBEDF1DB9F3DE0011E458 /* RouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEACBEDE1DB9F3DE0011E458 /* RouteViewModel.swift */; };
 		AEE5653A1DB7D33500AC5A94 /* DepartureCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE565391DB7D33500AC5A94 /* DepartureCellModel.swift */; };
 		AEE5653C1DB7D46A00AC5A94 /* DepartureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE5653B1DB7D46A00AC5A94 /* DepartureCell.swift */; };
 		C2A8731D3F51B66D0C6B2383 /* Pods_TrainTrippinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141683440CC061EF1C186832 /* Pods_TrainTrippinTests.framework */; };
@@ -41,7 +42,7 @@
 		AE38CBFB1DB6748B002AE26A /* TrainTrippin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainTrippin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE38CBFE1DB6748B002AE26A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE38CC001DB6748B002AE26A /* DeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
-		AE38CC021DB6748B002AE26A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AE38CC021DB6748B002AE26A /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		AE38CC051DB6748B002AE26A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE38CC071DB6748B002AE26A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE38CC0A1DB6748B002AE26A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		AE6EF94E1DB80BD3002FC492 /* DepartureCellModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureCellModelTests.swift; sourceTree = "<group>"; };
 		AE6EF9521DB813D9002FC492 /* DepartureModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureModel.swift; sourceTree = "<group>"; };
 		AE94CA291DB67D2B007C0648 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AEACBEDE1DB9F3DE0011E458 /* RouteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewModel.swift; sourceTree = "<group>"; };
 		AEE565391DB7D33500AC5A94 /* DepartureCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureCellModel.swift; sourceTree = "<group>"; };
 		AEE5653B1DB7D46A00AC5A94 /* DepartureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureCell.swift; sourceTree = "<group>"; };
 		B662A2FDD1E03C0855898F83 /* Pods-TrainTrippin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrainTrippin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrainTrippin/Pods-TrainTrippin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,8 +152,8 @@
 		AE6AB2511DB8B9E2005847A2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				AE38CC021DB6748B002AE26A /* DetailViewController.swift */,
 				AE6AB24F1DB8B9AB005847A2 /* Departures */,
+				AEACBEE01DB9F3F50011E458 /* Route */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -192,6 +194,15 @@
 				AE38CC0C1DB6748B002AE26A /* Info.plist */,
 			);
 			name = App;
+			sourceTree = "<group>";
+		};
+		AEACBEE01DB9F3F50011E458 /* Route */ = {
+			isa = PBXGroup;
+			children = (
+				AE38CC021DB6748B002AE26A /* RouteViewController.swift */,
+				AEACBEDE1DB9F3DE0011E458 /* RouteViewModel.swift */,
+			);
+			name = Route;
 			sourceTree = "<group>";
 		};
 		BAE738385508E2075F4D1E67 /* Pods */ = {
@@ -410,13 +421,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEE5653C1DB7D46A00AC5A94 /* DepartureCell.swift in Sources */,
-				AE38CC031DB6748B002AE26A /* DetailViewController.swift in Sources */,
+				AE38CC031DB6748B002AE26A /* RouteViewController.swift in Sources */,
 				AE38CC011DB6748B002AE26A /* DeparturesViewController.swift in Sources */,
 				AE94CA2A1DB67D2B007C0648 /* main.swift in Sources */,
 				AE38CBFF1DB6748B002AE26A /* AppDelegate.swift in Sources */,
 				AE4F1A1B1DB7C144003C7A47 /* DeparturesViewModel.swift in Sources */,
 				AEE5653A1DB7D33500AC5A94 /* DepartureCellModel.swift in Sources */,
 				AE6EF9531DB813D9002FC492 /* DepartureModel.swift in Sources */,
+				AEACBEDF1DB9F3DE0011E458 /* RouteViewModel.swift in Sources */,
 				AE4F1A1D1DB7C262003C7A47 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

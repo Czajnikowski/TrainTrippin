@@ -36,41 +36,6 @@ class DeparturesViewModel: NSObject {
     
     private let disposeBag = DisposeBag()
     
-    struct XMLElementName {
-        static let root = "ArrayOfObjStationData"
-        static let stationData = "objStationData"
-        static let trainCode = "Traincode"
-        static let trainType = "Traintype"
-        static let expectedDeparture = "Expdepart"
-        static let trainDirection = "Direction"
-        static let northboundDirection = "Northbound"
-        static let southboundDirection = "Southbound"
-    }
-    
-    func transformResponseIntoDepartureModelsTowardsDestination(_ response: (HTTPURLResponse, Data)) -> [DepartureModel] {
-        let xml = SWXMLHash.parse(response.1)
-        let station = xml[XMLElementName.root][XMLElementName.stationData]
-        
-        return station
-            .map { xml in
-                let trainCode = xml[XMLElementName.trainCode].element!.text!
-                let trainType = xml[XMLElementName.trainType].element!.text!
-                let expectedDeparture = xml[XMLElementName.expectedDeparture].element!.text!
-                let trainDirection = xml[XMLElementName.trainDirection].element!.text! == XMLElementName.northboundDirection ? TrainDirection.northbound : TrainDirection.southbound
-                
-                return (trainCode, trainType, expectedDeparture, trainDirection)
-            }
-            .filter { train in
-                if _currentRoute.value == .fromDalkeyToBroombridge {
-                    return train.3 == .northbound
-                }
-                else {
-                    return train.3 == .southbound
-                }
-            }
-            .map(DepartureModel.init)
-    }
-    
     override init() {
         departuresSections = departures.asObservable()
             .map { departures in
@@ -125,5 +90,45 @@ class DeparturesViewModel: NSObject {
                 self.refreshDepartures.onNext(())
             })
             .addDisposableTo(disposeBag)
+    }
+    
+    func viewModel(forIndexPath indexPath: IndexPath) -> RouteViewModel {
+        let model = departures.value[indexPath.row]
+        return RouteViewModel(withDepartureModel: model)
+    }
+    
+    struct XMLElementName {
+        static let root = "ArrayOfObjStationData"
+        static let stationData = "objStationData"
+        static let trainCode = "Traincode"
+        static let trainType = "Traintype"
+        static let expectedDeparture = "Expdepart"
+        static let trainDirection = "Direction"
+        static let northboundDirection = "Northbound"
+        static let southboundDirection = "Southbound"
+    }
+    
+    func transformResponseIntoDepartureModelsTowardsDestination(_ response: (HTTPURLResponse, Data)) -> [DepartureModel] {
+        let xml = SWXMLHash.parse(response.1)
+        let station = xml[XMLElementName.root][XMLElementName.stationData]
+        
+        return station
+            .map { xml in
+                let trainCode = xml[XMLElementName.trainCode].element!.text!
+                let trainType = xml[XMLElementName.trainType].element!.text!
+                let expectedDeparture = xml[XMLElementName.expectedDeparture].element!.text!
+                let trainDirection = xml[XMLElementName.trainDirection].element!.text! == XMLElementName.northboundDirection ? TrainDirection.northbound : TrainDirection.southbound
+                
+                return (trainCode, trainType, expectedDeparture, trainDirection)
+            }
+            .filter { train in
+                if _currentRoute.value == .fromDalkeyToBroombridge {
+                    return train.3 == .northbound
+                }
+                else {
+                    return train.3 == .southbound
+                }
+            }
+            .map(DepartureModel.init)
     }
 }

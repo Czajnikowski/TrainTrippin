@@ -11,14 +11,14 @@ import UIKit
 import RxSwift
 
 class DeparturesViewController: UIViewController {
-    let disposeBag = DisposeBag()
-    
     @IBOutlet weak var departuresTableView: UITableView!
     @IBOutlet weak var changeDirectionButton: UIButton!
     @IBOutlet var viewModel: DeparturesViewModel!
-    let refreshControl = UIRefreshControl()
+    private let refreshControl = UIRefreshControl()
     
-    let dataSource = RxTableViewSectionedReloadDataSource<DeparturesListSection>()
+    private let dataSource = RxTableViewSectionedReloadDataSource<DeparturesListSection>()
+    
+    private let disposeBag = DisposeBag()
     
     struct Reusable {
         static let cellReuseIdentifier = "DepartureCell"
@@ -31,6 +31,11 @@ class DeparturesViewController: UIViewController {
         configure(viewModel)
         
         loadDepartures()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let routeViewController = (segue.destination as! UINavigationController).viewControllers.first! as! RouteViewController
+        routeViewController.viewModel = viewModel.viewModel(forIndexPath: departuresTableView.indexPathForSelectedRow!)
     }
     
     func addRefreshControl(inTableView tableView: UITableView) {
