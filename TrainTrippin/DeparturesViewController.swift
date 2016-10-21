@@ -16,6 +16,7 @@ class DeparturesViewController: UIViewController {
     @IBOutlet weak var departuresTableView: UITableView!
     @IBOutlet weak var changeDirectionButton: UIButton!
     @IBOutlet var viewModel: DeparturesViewModel!
+    let refreshControl = UIRefreshControl()
     
     let dataSource = RxTableViewSectionedReloadDataSource<DeparturesListSection>()
     
@@ -26,8 +27,16 @@ class DeparturesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addRefreshControl(inTableView: departuresTableView)
         configure(viewModel)
-        loadDepartures(viewModel)
+        
+        loadDepartures()
+    }
+    
+    func addRefreshControl(inTableView tableView: UITableView) {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        departuresTableView.addSubview(refreshControl)
     }
     
     func configure(_ viewModel: DeparturesViewModel) {
@@ -55,14 +64,25 @@ class DeparturesViewController: UIViewController {
                 }
             })
             .addDisposableTo(disposeBag)
+        
+        viewModel.showRefreshControl
+            .filter { return $0 == false }
+            .subscribe(onNext: { showRefreshControl in
+                self.refreshControl.endRefreshing()
+            })
+            .addDisposableTo(disposeBag)
     }
     
-    func loadDepartures(_ viewModel: DeparturesViewModel) {
+    func loadDepartures() {
         viewModel.refreshDepartures.onNext(())
     }
     
     @IBAction func changeDirectionButtonDidTap() {
         viewModel.toggleRoute.onNext(())
+    }
+    
+    func refresh(_ refreshControl: UIRefreshControl) {
+        loadDepartures()
     }
 }
 

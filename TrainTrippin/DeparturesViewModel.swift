@@ -15,15 +15,14 @@ import RxSwift
 typealias DeparturesListSection = SectionModel<Void, DepartureCellModelType>
 
 class DeparturesViewModel: NSObject {
-    private let disposeBag = DisposeBag()
-    
     //  Input:
     let refreshDepartures = PublishSubject<Void>()
     let toggleRoute = PublishSubject<Void>()
     
     //  Output:
     let departuresSections: Driver<[DeparturesListSection]>
-    let currentRoute = Variable(Route.fromDalkeyToBroombridge)
+    let showRefreshControl: Observable<Bool>
+    let currentRoute: Observable<Route>
     
     enum Route {
         case fromDalkeyToBroombridge
@@ -32,6 +31,10 @@ class DeparturesViewModel: NSObject {
     
     private let networking = Networking()
     private let departures = Variable<[DepartureModel]>([])
+    private let _showRefreshControl = PublishSubject<Bool>()
+    private let _currentRoute = Variable(Route.fromDalkeyToBroombridge)
+    
+    private let disposeBag = DisposeBag()
     
     struct XMLElementName {
         static let root = "ArrayOfObjStationData"
@@ -58,7 +61,7 @@ class DeparturesViewModel: NSObject {
                 return (trainCode, trainType, expectedDeparture, trainDirection)
             }
             .filter { train in
-                if currentRoute.value == .fromDalkeyToBroombridge {
+                if _currentRoute.value == .fromDalkeyToBroombridge {
                     return train.3 == .northbound
                 }
                 else {
@@ -77,15 +80,18 @@ class DeparturesViewModel: NSObject {
             }
             .asDriver(onErrorJustReturn: [])
         
+        showRefreshControl = _showRefreshControl.asObservable()
+        currentRoute = _currentRoute.asObservable()
+        
         super.init()
         
         toggleRoute
             .subscribe(onNext: { [unowned self] _ in
-                if self.currentRoute.value == Route.fromBroombridgeToDalkey {
-                    self.currentRoute.value = Route.fromDalkeyToBroombridge
+                if self._currentRoute.value == Route.fromBroombridgeToDalkey {
+                    self._currentRoute.value = Route.fromDalkeyToBroombridge
                 }
                 else {
-                    self.currentRoute.value = Route.fromBroombridgeToDalkey
+                    self._currentRoute.value = Route.fromBroombridgeToDalkey
                 }
             })
             .addDisposableTo(disposeBag)
@@ -102,6 +108,11 @@ class DeparturesViewModel: NSObject {
                 }
                 
                 request
+                    .do(onNext: { response in
+                        self._showRefreshControl.onNext(false)
+                    }, onError: { _ in
+                        self._showRefreshControl.onNext(false)
+                    })
                     .map(self.transformResponseIntoDepartureModelsTowardsDestination)
                     .bindTo(self.departures)
                     .addDisposableTo(self.disposeBag)
