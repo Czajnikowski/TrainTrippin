@@ -45,9 +45,8 @@ class DeparturesViewController: UIViewController {
     }
     
     func configure(_ viewModel: DeparturesViewModel) {
-        dataSource.configureCell = { [unowned self] _, tableView, indexPath, viewModel in
-            let strongSelf = self
-            let cell = strongSelf.departuresTableView.dequeueReusableCell(withIdentifier: Reusable.cellReuseIdentifier, for: indexPath) as! DepartureCell
+        dataSource.configureCell = { _, tableView, indexPath, viewModel in
+            let cell = tableView.dequeueReusableCell(withIdentifier: Reusable.cellReuseIdentifier, for: indexPath) as! DepartureCell
             cell.configure(viewModel)
             
             return cell

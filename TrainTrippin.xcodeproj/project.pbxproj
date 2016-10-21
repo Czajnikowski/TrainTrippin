@@ -15,6 +15,7 @@
 		AE38CC0B1DB6748B002AE26A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE38CC091DB6748B002AE26A /* LaunchScreen.storyboard */; };
 		AE4F1A1B1DB7C144003C7A47 /* DeparturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F1A1A1DB7C144003C7A47 /* DeparturesViewModel.swift */; };
 		AE4F1A1D1DB7C262003C7A47 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F1A1C1DB7C262003C7A47 /* Networking.swift */; };
+		AE6EB8BC1DBA00E20025164C /* TimeCalculationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6EB8BB1DBA00E20025164C /* TimeCalculationManager.swift */; };
 		AE6EF94F1DB80BD3002FC492 /* DepartureCellModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6EF94E1DB80BD3002FC492 /* DepartureCellModelTests.swift */; };
 		AE6EF9531DB813D9002FC492 /* DepartureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6EF9521DB813D9002FC492 /* DepartureModel.swift */; };
 		AE94CA2A1DB67D2B007C0648 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE94CA291DB67D2B007C0648 /* main.swift */; };
@@ -51,6 +52,7 @@
 		AE38CC171DB6748B002AE26A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE4F1A1A1DB7C144003C7A47 /* DeparturesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesViewModel.swift; sourceTree = "<group>"; };
 		AE4F1A1C1DB7C262003C7A47 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		AE6EB8BB1DBA00E20025164C /* TimeCalculationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCalculationManager.swift; sourceTree = "<group>"; };
 		AE6EF94E1DB80BD3002FC492 /* DepartureCellModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureCellModelTests.swift; sourceTree = "<group>"; };
 		AE6EF9521DB813D9002FC492 /* DepartureModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureModel.swift; sourceTree = "<group>"; };
 		AE94CA291DB67D2B007C0648 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		AE38CBFD1DB6748B002AE26A /* TrainTrippin */ = {
 			isa = PBXGroup;
 			children = (
+				AE6EB8BA1DBA00D10025164C /* Utilities */,
 				AE6AB2551DB8BA1F005847A2 /* App */,
 				AE6AB2511DB8B9E2005847A2 /* ViewControllers */,
 				AE6AB2501DB8B9C2005847A2 /* Networking */,
@@ -194,6 +197,14 @@
 				AE38CC0C1DB6748B002AE26A /* Info.plist */,
 			);
 			name = App;
+			sourceTree = "<group>";
+		};
+		AE6EB8BA1DBA00D10025164C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AE6EB8BB1DBA00E20025164C /* TimeCalculationManager.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		AEACBEE01DB9F3F50011E458 /* Route */ = {
@@ -429,6 +440,7 @@
 				AEE5653A1DB7D33500AC5A94 /* DepartureCellModel.swift in Sources */,
 				AE6EF9531DB813D9002FC492 /* DepartureModel.swift in Sources */,
 				AEACBEDF1DB9F3DE0011E458 /* RouteViewModel.swift in Sources */,
+				AE6EB8BC1DBA00E20025164C /* TimeCalculationManager.swift in Sources */,
 				AE4F1A1D1DB7C262003C7A47 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

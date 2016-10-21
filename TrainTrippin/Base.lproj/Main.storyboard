@@ -148,7 +148,7 @@
                     <connections>
                         <outlet property="countdownLabel" destination="PRF-Wi-68p" id="LfR-Dn-leW"/>
                         <outlet property="departureStation" destination="Dxd-gU-WYs" id="Vou-qS-t9g"/>
-                        <outlet property="departureTime" destination="Fw3-El-rxz" id="6Zg-3W-I3c"/>
+                        <outlet property="departureTimeLabel" destination="Fw3-El-rxz" id="6Zg-3W-I3c"/>
                         <outlet property="trainDirectionLabel" destination="pGE-Hq-Vlb" id="3hY-cj-0U5"/>
                         <outlet property="trainInfoLabel" destination="NuJ-hf-mq6" id="gCb-2v-Kyg"/>
                     </connections>

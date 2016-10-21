@@ -9,9 +9,18 @@
 import Foundation
 
 class RouteViewModel: NSObject {
-    let departureModel: DepartureModel
+    let departsIn: String
+    let trainInfo: String
+    let trainDirection: String
+    let departureTime: String
+    let departureStation: String
+    
     
     init(withDepartureModel departureModel: DepartureModel) {
-        self.departureModel = departureModel
+        departsIn = TimeCalculationManager.calculateDepartsIn(forDepartureTime: departureModel.expectedDeparture)
+        trainInfo = departureModel.trainType + " " + departureModel.trainCode
+        trainDirection = "Train from " + departureModel.fromStation + " towards " + (departureModel.trainDirection == .northbound ? "Broombridge" : "Dalkey")
+        departureTime = departureModel.expectedDeparture
+        departureStation = departureModel.fromStation
     }
 }

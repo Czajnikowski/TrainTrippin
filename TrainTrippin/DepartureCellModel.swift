@@ -21,37 +21,9 @@ struct DepartureCellModel: DepartureCellModelType {
     let trainType: String
     let departsIn: String
     
-    static let inputDateFormatter: DateFormatter = {
-        let timeFormat = "HH:mm"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = timeFormat
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+1")
-        
-        return dateFormatter
-    }()
-    static let outputDateFormatter: DateFormatter = {
-        let timeFormat = "H:mm:ss"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = timeFormat
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        
-        return dateFormatter
-    }()
-    
-    
-    let calculateDepartsIn: (DepartureModel) -> String = { departure in
-        let expectedDeparture = DepartureCellModel.inputDateFormatter.date(from: departure.expectedDeparture)!
-        let now = Date()
-        let timeIntervalDifference = expectedDeparture.timeIntervalSinceNow
-        let date = Date(timeIntervalSinceReferenceDate: timeIntervalDifference)
-        
-        return DepartureCellModel.outputDateFormatter.string(from: date)
-    }
-    
     init(withDeparture departure: DepartureModel) {
         trainCode = departure.trainCode
         trainType = departure.trainType
-        
-        departsIn = calculateDepartsIn(departure)
+        departsIn = TimeCalculationManager.calculateDepartsIn(forDepartureTime: departure.expectedDeparture)
     }
 }

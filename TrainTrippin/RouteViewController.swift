@@ -16,11 +16,15 @@ class RouteViewController: UIViewController {
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var trainInfoLabel: UILabel!
     @IBOutlet weak var trainDirectionLabel: UILabel!
-    @IBOutlet weak var departureTime: UILabel!
+    @IBOutlet weak var departureTimeLabel: UILabel!
     @IBOutlet weak var departureStation: UILabel!
     
     func configure(_ viewModel: RouteViewModel) {
-        
+        countdownLabel.text = viewModel.departsIn
+        trainInfoLabel.text = viewModel.trainInfo
+        trainDirectionLabel.text = viewModel.trainDirection
+        departureTimeLabel.text = viewModel.departureTime
+        departureStation.text = viewModel.departureStation
     }
 
     override func viewDidLoad() {

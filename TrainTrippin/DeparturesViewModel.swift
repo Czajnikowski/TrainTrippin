@@ -102,6 +102,7 @@ class DeparturesViewModel: NSObject {
         static let stationData = "objStationData"
         static let trainCode = "Traincode"
         static let trainType = "Traintype"
+        static let station = "Stationfullname"
         static let expectedDeparture = "Expdepart"
         static let trainDirection = "Direction"
         static let northboundDirection = "Northbound"
@@ -116,10 +117,11 @@ class DeparturesViewModel: NSObject {
             .map { xml in
                 let trainCode = xml[XMLElementName.trainCode].element!.text!
                 let trainType = xml[XMLElementName.trainType].element!.text!
+                let station = xml[XMLElementName.station].element!.text!
                 let expectedDeparture = xml[XMLElementName.expectedDeparture].element!.text!
                 let trainDirection = xml[XMLElementName.trainDirection].element!.text! == XMLElementName.northboundDirection ? TrainDirection.northbound : TrainDirection.southbound
                 
-                return (trainCode, trainType, expectedDeparture, trainDirection)
+                return (trainCode, trainType, expectedDeparture, trainDirection, station)
             }
             .filter { train in
                 if _currentRoute.value == .fromDalkeyToBroombridge {
