@@ -35,11 +35,11 @@ command line tools and `bundler`, if you don't have that yet.
 xcode-select --install
 ```
 
-The following commands will set up TrainTrippin. 
+The following commands will set up Train Trippin. 
 
 ```sh
 git clone git@github.com:Czajnikowski/TrainTrippin.git
-cd traintrippin
+cd TrainTrippin
 bundle install
 bundle exec fastlane make
 ```
