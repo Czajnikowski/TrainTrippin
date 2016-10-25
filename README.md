@@ -58,8 +58,7 @@ Architectural design of the app relies on the
 [MVVM pattern](http://www.sprynthesis.com/2014/12/06/reactivecocoa-mvvm-introduction/) which
 is slightly better than a common MVC pattern.
 
-To allow offline access I have implemented custom response caching mechanism (default didnt
-work, because of `private max-age=0` `cache-control` returned by server) with strategy return
+To allow offline access I have implemented NSURLCache-based response caching mechanism with strategy return
 from cache than load.
 
 My main goals were to split responsibilities reasonably among view controllers, view-models,
@@ -75,8 +74,6 @@ Observables/Drivers of view-model
 To achieve my goals I have used:
 - [RxSwift](https://github.com/ReactiveX/RxSwift) (with RxCocoa and
 [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources))
-- [RxAlamofire](https://github.com/RxSwiftCommunity/RxAlamofire) (with
-[Alamofire](https://github.com/Alamofire/Alamofire))
  
 Additionally I have used:
 - [SWXMLHash](https://github.com/drmohundro/SWXMLHash) (convenient XML parser)
