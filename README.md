@@ -99,3 +99,4 @@ view-models, networking and so on
 - Declarative binding code in view controllers might be split into functions like
 `configureTableView`, `configureButton` and so on
 - Obviously UI/UX
+- Add more tests
