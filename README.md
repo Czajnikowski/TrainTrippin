@@ -1,7 +1,7 @@
 Train Trippin
 =======
 
-This is a quick solution (~ 18h of development) to the task given to me by some company
+This is a quick solution (they asked me to do it in 4-5 hours - it took a bit more in fact) to the task given to me by some company
 as a part of recruting process:
 
 The user need to travel by train every morning and every evening between Broombridge to
