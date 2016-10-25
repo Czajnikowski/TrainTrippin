@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import RxAlamofire
 import RxSwift
-import Alamofire
-
+import RxCocoa
+import SWXMLHash
 
 class Networking {
     typealias Response = (HTTPURLResponse, Data)
@@ -25,35 +24,35 @@ class Networking {
         URLCache.shared = urlCache
     }
     
-    func requestTrainsFromDalkey() -> Observable<Response> {
+    func requestTrainsFromDalkey() -> Observable<XMLIndexer> {
         return request(withURL: APIurl.departuresFromDalkeyURL)
     }
     
-    func requestTrainsFromBroombridge() -> Observable<Response> {
+    func requestTrainsFromBroombridge() -> Observable<XMLIndexer> {
         return request(withURL: APIurl.departuresFromBroombridgeURL)
     }
     
-    //test it?
-    private func request(withURL url: URL) -> Observable<Response> {
-        let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url))
-        if let cachedResponse = cachedResponse {
-            let subject = BehaviorSubject(value: (cachedResponse.response as! HTTPURLResponse, cachedResponse.data))
+    private func request(withURL url: URL) -> Observable<XMLIndexer> {
+        return URLSession.shared.rx.XML(url)
+    }
+}
+
+extension Reactive where Base: URLSession {
+    func XML(_ url: URL) -> Observable<XMLIndexer> {
+        return Observable.create { observer -> Disposable in
+            let cacheRequest = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.returnCacheDataDontLoad)
+            _ = self.XML(cacheRequest).bindTo(observer)
             
-            _ = requestData(.get, url)
-                .subscribe(onNext: { (response) in
-                    URLCache.shared.storeCachedResponse(CachedURLResponse(response: response.0, data: response.1), for: URLRequest(url: url))
-                    subject.onNext(response)
-                    }
-                )
+            let serverRequest = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadRevalidatingCacheData)
+            _ = self.XML(serverRequest).bindTo(observer)
             
-            return subject
+            return Disposables.create()
         }
-        else {
-            return requestData(.get, url)
-                .do(onNext: { (response) in
-                    URLCache.shared.storeCachedResponse(CachedURLResponse(response: response.0, data: response.1), for: URLRequest(url: url))
-                }
-            )
+    }
+    
+    func XML(_ request: URLRequest) -> Observable<XMLIndexer> {
+        return data(request).map { data in
+            return SWXMLHash.parse(data)
         }
     }
 }

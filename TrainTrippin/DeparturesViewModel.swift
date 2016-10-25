@@ -64,7 +64,7 @@ class DeparturesViewModel: NSObject {
         refreshDepartures
             .withLatestFrom(currentRoute.asObservable())
             .subscribe(onNext: { [unowned self] route in
-                let request: Observable<(HTTPURLResponse, Data)>
+                let request: Observable<XMLIndexer>
                 if route == Route.fromDalkeyToBroombridge {
                     request = self.networking.requestTrainsFromDalkey()
                 }
@@ -109,8 +109,7 @@ class DeparturesViewModel: NSObject {
         static let southboundDirection = "Southbound"
     }
     
-    func transformResponseIntoDepartureModelsTowardsDestination(_ response: (HTTPURLResponse, Data)) -> [DepartureModel] {
-        let xml = SWXMLHash.parse(response.1)
+    func transformResponseIntoDepartureModelsTowardsDestination(_ xml: XMLIndexer) -> [DepartureModel] {
         let station = xml[XMLElementName.root][XMLElementName.stationData]
         
         return station

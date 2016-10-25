@@ -16,8 +16,6 @@ target 'TrainTrippin' do
   pod 'SWXMLHash', '~> 3.0.0'
   pod 'RxSwift',    '3.0.0-rc.1'
   pod 'RxCocoa',    '3.0.0-rc.1'
-  pod 'Alamofire', '~> 4.0'
-  pod 'RxAlamofire', '3.0.0-rc.1'
   pod 'RxDataSources', '~> 1.0.0-rc.1'
   pod "AFDateHelper"
 

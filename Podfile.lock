@@ -1,11 +1,5 @@
 PODS:
   - AFDateHelper (3.5.3)
-  - Alamofire (4.0.1)
-  - RxAlamofire (3.0.0-rc.1):
-    - RxAlamofire/Core (= 3.0.0-rc.1)
-  - RxAlamofire/Core (3.0.0-rc.1):
-    - Alamofire (~> 4.0)
-    - RxSwift (~> 3.0.0-rc.1)
   - RxCocoa (3.0.0-rc.1):
     - RxSwift (~> 3.0.0-rc.1)
   - RxDataSources (1.0.0-rc.2):
@@ -16,8 +10,6 @@ PODS:
 
 DEPENDENCIES:
   - AFDateHelper
-  - Alamofire (~> 4.0)
-  - RxAlamofire (= 3.0.0-rc.1)
   - RxCocoa (= 3.0.0-rc.1)
   - RxDataSources (~> 1.0.0-rc.1)
   - RxSwift (= 3.0.0-rc.1)
@@ -25,13 +17,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFDateHelper: e64bcc4a88a07e1d3e62442741b2a164adc02d77
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  RxAlamofire: 5e544296d77b754c4ad9cb419c29936e6bc9711d
   RxCocoa: e72a074a7f38896ec0382d096df5f58df10115c7
   RxDataSources: f7de4f2a0725332319a4322dd795ae45ce28c529
   RxSwift: d7a3819dd71789c473e3cbf1a0c02d58b2692739
   SWXMLHash: e0f6935971f01b06fb228cf435510d998ecde647
 
-PODFILE CHECKSUM: 5da225daa4d1892def8724e5d81d1eba2085bc2e
+PODFILE CHECKSUM: 58120355a69a31aa6c55eafe60f82b823a3f66a2
 
 COCOAPODS: 1.0.1
