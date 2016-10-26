@@ -85,10 +85,13 @@ class DeparturesViewModel: NSObject {
             )
             .addDisposableTo(disposeBag)
         
-        currentRoute.asObservable()
-            .subscribe(onNext: { [unowned self] _ in
-                self.refreshDepartures.onNext(())
-            })
+        currentRoute
+            .skip(1)
+            .distinctUntilChanged(==)
+            .map { _ in
+                return Void()
+            }
+            .bindTo(refreshDepartures)
             .addDisposableTo(disposeBag)
     }
     
