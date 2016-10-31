@@ -29,21 +29,27 @@ class DeparturesViewModel: NSObject {
         case fromBroombridgeToDalkey
     }
     
-    private let networking = Networking()
-    private let departures = Variable<[DepartureModel]>([])
+    private let _networking = Networking()
+    private let _departures = Variable<[DepartureModel]>([])
     private let _showRefreshControl = PublishSubject<Bool>()
     private let _currentRoute = Variable(Route.fromDalkeyToBroombridge)
     
     private let disposeBag = DisposeBag()
     
     override init() {
-        departuresSections = departures.asObservable()
+        departuresSections = _departures.asObservable()
             .map { departures in
                 let cellModels = departures.map(DepartureCellModel.init)
                 let section = DeparturesListSection(model: Void(), items: cellModels)
                 return [section]
             }
             .asDriver(onErrorJustReturn: [])
+        
+        Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+            .withLatestFrom(_departures.asObservable())
+            .asDriver(onErrorJustReturn: [])
+            .drive(_departures)
+            .addDisposableTo(disposeBag)
         
         showRefreshControl = _showRefreshControl.asObservable()
         currentRoute = _currentRoute.asObservable()
@@ -66,10 +72,10 @@ class DeparturesViewModel: NSObject {
             .subscribe(onNext: { [unowned self] route in
                 let request: Observable<XMLIndexer>
                 if route == Route.fromDalkeyToBroombridge {
-                    request = self.networking.requestTrainsFromDalkey()
+                    request = self._networking.requestTrainsFromDalkey()
                 }
                 else {
-                    request = self.networking.requestTrainsFromBroombridge()
+                    request = self._networking.requestTrainsFromBroombridge()
                 }
                 
                 request
@@ -79,7 +85,7 @@ class DeparturesViewModel: NSObject {
                         self._showRefreshControl.onNext(false)
                     })
                     .map(self.transformResponseIntoDepartureModelsTowardsDestination)
-                    .bindTo(self.departures)
+                    .bindTo(self._departures)
                     .addDisposableTo(self.disposeBag)
                 }
             )
@@ -96,7 +102,7 @@ class DeparturesViewModel: NSObject {
     }
     
     func viewModel(forIndexPath indexPath: IndexPath) -> RouteViewModel {
-        let model = departures.value[indexPath.row]
+        let model = _departures.value[indexPath.row]
         return RouteViewModel(withDepartureModel: model)
     }
     
